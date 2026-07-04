@@ -1,9 +1,9 @@
+import HomeCarousel from "@/components/shared/home/home-carousel";
+import data from "@/lib/data";
+
 export default function Page() {
-  return (
-    <div>
-      <h1 className="h1-bold text-center p-10">Home page content</h1>
-    </div>
-  );
+  const carouselItems = data.carousels;
+  return <HomeCarousel items={carouselItems} />;
 }
 
 // https://downgit.github.io/#/home
