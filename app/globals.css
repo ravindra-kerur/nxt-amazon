@@ -72,7 +72,7 @@
   --chart-3: oklch(0.444 0.011 73.639);
   --chart-4: oklch(0.374 0.01 67.558);
   --chart-5: oklch(0.268 0.007 34.298);
-  --radius: 0.625rem;
+  --radius: 0.5rem;
   --sidebar: oklch(0.985 0.001 106.423);
   --sidebar-foreground: oklch(0.147 0.004 49.25);
   --sidebar-primary: oklch(0.681 0.162 75.834);
@@ -127,4 +127,12 @@
   html {
     @apply font-sans;
   }
+}
+
+@utility header-button {
+  @apply cursor-pointer p-1 border border-transparent hover:border-white rounded-xs;
+}
+
+@utility h1-bold {
+  @apply font-bold text-2xl lg:text-3xl;
 }
