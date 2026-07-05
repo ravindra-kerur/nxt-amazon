@@ -8,3 +8,6 @@ export default function Page() {
 
 // https://downgit.github.io/#/home
 // https://www.youtube.com/watch?v=WLHCPwqHzzQ&t=9951s
+
+// mongodb+srv://nextjs-amazon:<db_password>@cluster0.qmtrpls.mongodb.net/?appName=Cluster0
+//  9EvlbALVTBzRZ3L5
