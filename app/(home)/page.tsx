@@ -62,23 +62,41 @@ export default async function Page() {
 
   const todaysDeals = await getProductsByTag({ tag: "todays-deal", limit: 10 });
 
+  const bestSellingProducts = await getProductsByTag({
+    tag: "best-seller",
+    limit: 10,
+  });
+
   return (
     <>
       <HomeCarousel items={carouselItems} />
 
-      <div className="md:p-4 md: space-y-4 bg-border">
+      <div className="md:p-4 md:space-y-4 bg-border">
         <HomeCard cards={cards} />
       </div>
 
-      <Card className="w-full rounded-none">
-        <CardContent className="p-4 items-center gap-3">
-          <ProductSlider
-            title="Today's Deals"
-            products={todaysDeals}
-            hideDetails={false}
-          />
-        </CardContent>
-      </Card>
+      <div className="md:p-4 md:space-y-4 bg-border md:pt-0">
+        <Card className="w-full rounded-none">
+          <CardContent className="p-4 items-center gap-3">
+            
+            <ProductSlider
+              title="Today's Deals"
+              products={todaysDeals}
+              hideDetails={false}
+            />
+          </CardContent>
+        </Card>
+
+        <Card className="w-full rounded-none">
+          <CardContent className="p-4 items-center gap-3">
+            <ProductSlider
+              title="Best Selling Products"
+              products={bestSellingProducts}
+              hideDetails={true}
+            />
+          </CardContent>
+        </Card>
+      </div>
     </>
   );
 }
