@@ -136,3 +136,7 @@
 @utility h1-bold {
   @apply font-bold text-2xl lg:text-3xl;
 }
+
+@utility h2-bold {
+  @apply font-bold text-lg lg:text-xl;
+}
