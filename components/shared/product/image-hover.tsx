@@ -29,7 +29,7 @@ const ImageHover = ({
   const handleMouseEnter = () => {
     hoverTimeout.current = setTimeout(() => {
       setIsHovered(true);
-    }, 100);
+    }, 1000);
   };
 
   const handleMouseLeave = () => {
