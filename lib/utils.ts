@@ -44,3 +44,13 @@ const NUMBER_FORMATTER = new Intl.NumberFormat("en-US");
 export const formatNumber = (num: number) => {
   return NUMBER_FORMATTER.format(num);
 };
+
+export const round2 = (num: number) => {
+  return Math.round(((num + Number.EPSILON) * 100) / 100);
+};
+
+export const generateId = () => {
+  return Array.from({ length: 24 }, () => Math.floor(Math.random() * 10)).join(
+    "",
+  );
+};
