@@ -16,7 +16,7 @@ import { toast } from "sonner";
 
 const AddToCart = ({
   item,
-  minimal,
+  minimal = false,
 }: {
   item: OrderItem;
   minimal?: boolean;
@@ -71,8 +71,8 @@ const AddToCart = ({
         type="button"
         onClick={async () => {
           try {
-            const itemId = await addItem(item, quantity);
-            router.push(`/cart/${itemId}`);
+            const itemId = await addItem(item, quantity)
+            router.push(`/cart/${itemId}`)
           } catch (error) {
             toast("Error", {
               description: `${error}+`,
