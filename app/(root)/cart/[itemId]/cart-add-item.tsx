@@ -16,8 +16,6 @@ const CartAddItem = ({ itemId }: { itemId: string }) => {
     cart: { items, itemsPrice },
   } = useCartStore();
 
-console.log("Ravi - ", itemId, items)
-
   const item = items.find((x) => x.clientId === itemId);
 
   if (!item) return notFound();
@@ -71,7 +69,7 @@ console.log("Ravi - ", itemId, items)
                 ) : (
                   <div className="flex items-center">
                     <div>
-                      <span className="text-gray-700">
+                      <span className="text-green-700">
                         Your order qualifies for FREE Shipping.
                       </span>{" "}
                       Choose this option at checkout.
