@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { APP_NAME, APP_DESCRIPTION, APP_SLOGAN } from "@/lib/constants";
+import ClientProviders from "@/components/shared/client-providers";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -31,11 +32,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${inter.className} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className={`${inter.className} h-full antialiased`}>
+      <body className="min-h-full flex flex-col">
+        <ClientProviders>{children}</ClientProviders>
+      </body>
     </html>
   );
 }

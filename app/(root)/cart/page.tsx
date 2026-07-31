@@ -134,8 +134,8 @@ const CartPage = () => {
                   ))}
 
                   <div className="flex justify-end text-lg my-2">
-                    Subtotal:({" "}
-                    {items.reduce((acc, item) => acc + item.quantity, 0)}
+                    Subtotal: (
+                    {items.reduce((acc, item) => acc + item.quantity, 0)}{" "}
                     Items):{" "}
                     <span className="font-bold ml-1">
                       <ProductPrice price={itemsPrice} plain />
@@ -170,7 +170,7 @@ const CartPage = () => {
                   )}
 
                   <div className="text-lg">
-                    (Subtotal:{" "}
+                    (Subtotal: {" "}
                     {items.reduce((acc, item) => acc + item.quantity, 0)}{" "}
                     Items):{" "}
                     <span className="font-bold">
