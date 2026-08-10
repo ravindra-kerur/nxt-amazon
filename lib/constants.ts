@@ -24,3 +24,7 @@ export const colorClasses = {
   Navy: "bg-[#000080]",
   Yellow: "bg-[#eab308]",
 } as const;
+
+export const APP_COPYRIGHT =
+  process.env.NEXT_PUBLIC_APP_COPYRIGHT ||
+  "© 2026 {APP_NAME}. All rights reserved.";
