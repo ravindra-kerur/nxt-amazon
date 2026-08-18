@@ -6,6 +6,7 @@ import Credentials from "next-auth/providers/credentials";
 import { connectToDatabase } from "./lib/db";
 import User from "./lib/db/models/user.model";
 import bcrypt from "bcryptjs";
+import Google from "next-auth/providers/google";
 
 declare module "next-auth" {
   interface Session {
@@ -28,6 +29,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   },
   adapter: MongoDBAdapter(clientPromise),
   providers: [
+    Google({
+      allowDangerousEmailAccountLinking: true,
+    }),
     Credentials({
       credentials: {
         email: {

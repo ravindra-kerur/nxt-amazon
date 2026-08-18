@@ -7,6 +7,7 @@ import { APP_NAME } from "@/lib/constants";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Metadata } from "next";
+import GoogleSigninForm from "./google-signin-form";
 
 export const metadata: Metadata = {
   title: "Sign In",
@@ -34,6 +35,10 @@ const SignIn = async (props: {
         <CardContent>
           <div>
             <CredentialsSigninForm />
+          </div>
+          <SeparatorWithOr>OR</SeparatorWithOr>
+          <div className="mt-4">
+            <GoogleSigninForm />
           </div>
         </CardContent>
       </Card>
