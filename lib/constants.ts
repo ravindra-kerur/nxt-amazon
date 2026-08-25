@@ -28,3 +28,45 @@ export const colorClasses = {
 export const APP_COPYRIGHT =
   process.env.NEXT_PUBLIC_APP_COPYRIGHT ||
   "© 2026 {APP_NAME}. All rights reserved.";
+
+export const AVAILABLE_PAYMENT_METHODS = [
+  {
+    name: "PayPal",
+    commission: "s",
+    isDefault: "dsds",
+  },
+  {
+    name: "Stripe",
+    commission: "s",
+    isDefault: "dsds",
+  },
+  {
+    name: "Cash on Delivery",
+    commission: "s",
+    isDefault: "dsds",
+  },
+];
+
+export const DEFAULT_PAYMENT_METHOD =
+  process.env.DEFAULT_PAYMENT_METHOD || "PayPal";
+
+export const AVAILABLE_DELIVERY_DATES = [
+  {
+    name: "Tomorrow",
+    daysToDeliver: 1,
+    shippingPrice: 12.9,
+    freeShippingMinPrice: 0,
+  },
+  {
+    name: "Next 3 Days",
+    daysToDeliver: 3,
+    shippingPrice: 6.9,
+    freeShippingMinPrice: 0,
+  },
+  {
+    name: "Next 5 Days",
+    daysToDeliver: 5,
+    shippingPrice: 4.9,
+    freeShippingMinPrice: 35,
+  },
+];
