@@ -78,3 +78,91 @@ export const formatError = (error: any): string => {
       : JSON.stringify(error.message);
   }
 };
+
+export const calculateFutureDates = (days: number) => {
+  const currentDate = new Date();
+  currentDate.setDate(currentDate.getDate() + days);
+  return currentDate;
+};
+
+// export const getMonthName = (yearAndMonth: string) => {
+//   const [year, monthNumber] = yearAndMonth.split("-");
+//   const date = new Date();
+//   date.setMonth(parseInt(monthNumber) - 1);
+//   return new Date().getMonth() === parseInt(monthNumber) - 1
+//     ? `${date.toLocaleString("default", { month: "long" })} (ongoing)`
+//     : `${date.toLocaleString("default", { month: "long" })}`;
+// };
+
+export const getMonthName = (yearAndMonth: string) => {
+  const [year, monthNumber] = yearAndMonth.split("-");
+
+  const date = new Date(parseInt(year), parseInt(monthNumber) - 1);
+
+  const currentDate = new Date();
+
+  const isCurrentMonth =
+    currentDate.getFullYear() === parseInt(year) &&
+    currentDate.getMonth() === parseInt(monthNumber) - 1;
+
+  return isCurrentMonth
+    ? `${date.toLocaleString("default", { month: "long" })} (ongoing)`
+    : date.toLocaleString("default", { month: "long" });
+};
+
+export const calculatePastDate = (days: number) => {
+  const currentDate = new Date();
+  currentDate.setDate(currentDate.getDate() - days);
+  return currentDate;
+};
+
+export const timeUntilMidNight = (): { hours: number; minutes: number } => {
+  const now = new Date();
+  const midNight = new Date();
+  midNight.setHours(24, 0, 0, 0); // Set to 12:00 AM (next day)
+
+  const diff = midNight.getTime() - now.getTime(); // Difference in milliseconds
+  const hours = Math.floor(diff / (1000 * 60 * 60));
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+  return { hours, minutes };
+};
+
+export const formateDateTime = (dateString: Date) => {
+  const dateTimeOptions: Intl.DateTimeFormatOptions = {
+    month: "short",
+    year: "numeric",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  };
+  const dateOptions: Intl.DateTimeFormatOptions = {
+    month: "short",
+    year: "numeric",
+    day: "numeric",
+  };
+  const timeOptions: Intl.DateTimeFormatOptions = {
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  };
+  const formattedDateTime: string = new Date(dateString).toLocaleString(
+    "en-US",
+    dateTimeOptions,
+  );
+  const formattedDate: string = new Date(dateString).toLocaleString(
+    "en-US",
+    dateOptions,
+  );
+
+  const formattedTime: string = new Date(dateString).toLocaleString(
+    "en-US",
+    timeOptions,
+  );
+  return {
+    dateTime: formattedDateTime,
+    dateOnly: formattedDate,
+    timeOnly: formattedTime,
+  };
+};
