@@ -395,14 +395,13 @@ const CheckoutForm = () => {
                           <RadioGroupItem
                             value={pm.name}
                             id={`payment-${pm.name}`}
+                          />
+                          <Label
+                            className="font-bold pl-2 cursor-pointer"
+                            htmlFor={`payment-${pm.name}`}
                           >
-                            <Label
-                              className="font-bold pl-2 cursor-pointer"
-                              htmlFor={`payment-${pm.name}`}
-                            >
-                              {pm.name}
-                            </Label>
-                          </RadioGroupItem>
+                            {pm.name}
+                          </Label>
                         </div>
                       ))}
                     </RadioGroup>
