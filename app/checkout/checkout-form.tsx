@@ -36,6 +36,8 @@ import React, { useEffect, useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import CheckoutFooter from "./checkout-footer";
 import CheckoutSummary from "./checkout-summary";
+import { createOrder } from "@/lib/actions/order.actions";
+import { toast } from "sonner";
 
 const shippingAddressDefaultValues =
   process.env.NODE_ENV === "development"
@@ -76,6 +78,7 @@ const CheckoutForm = () => {
     updateItem,
     removeItem,
     setDeliveryDateIndex,
+    clearCart,
   } = useCartStore();
 
   const isMounted = useIsMounted();
@@ -106,7 +109,34 @@ const CheckoutForm = () => {
     shippingAddressForm.setValue("phone", shippingAddress.phone);
   }, [items, isMounted, router, shippingAddress, shippingAddressForm]);
 
-  const handlePlaceOrder = () => {};
+  const handlePlaceOrder = async () => {
+    const res = await createOrder({
+      items,
+      shippingAddress,
+      expectedDeliveryDate: calculateFutureDates(
+        AVAILABLE_DELIVERY_DATES[deliveryDateIndex!].daysToDeliver,
+      ),
+      deliveryDateIndex,
+      paymentMethod,
+      itemsPrice,
+      shippingPrice,
+      taxPrice,
+      totalPrice,
+    });
+
+    if (!res.success) {
+      toast("Error", {
+        description: res.message,
+      });
+    } else {
+      toast("Order placed successfully", {
+        description: res.message,
+      });
+    }
+
+    clearCart();
+    router.push(`/checkout/${res.data?.orderId}`);
+  };
 
   const handleSelectPaymentMethod = () => {
     setIsAddressSelected(true);
